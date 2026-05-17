@@ -1,0 +1,471 @@
+html {
+    font-size: 100%;
+}
+
+body {
+    color: #000;
+    font-family: "Noto Sans JP", sans-serif;
+    line-height: 2.0;
+    letter-spacing: 0.1em;
+    font-size: 1rem;
+}
+
+a {
+    color: #000;
+    text-decoration: none;
+    display: inline-block;
+}
+
+img {
+    max-width: 100%;
+    vertical-align: bottom;
+    object-fit: cover;
+}
+
+li {
+    list-style: none;
+}
+
+.wrapper {
+    max-width: 1024px;
+    margin: 0 auto;
+    padding-inline: 16px;
+    margin-bottom: 180px;
+}
+
+.challenges .wrapper,
+.sales .wrapper {
+    background-color: #FAF9F6; /* ここにお好みのコードを */
+    padding-block: 80px;
+    box-shadow: 0 0 0 100vmax #FAF9F6;
+    clip-path: inset(0 -100vmax);
+    z-index: -10;
+}
+
+/* セクション共通 */
+.section-title {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 50px;
+    position: relative;
+}
+
+.mission .section-title,
+.about .section-title,
+.sales .section-title {
+    text-align: left;
+    padding-left: 24px;
+    position: relative;
+    line-height: 1;
+}
+
+.mission .section-title::before,
+.about .section-title::before,
+.sales .section-title::before {
+    content: ''; /* 空の要素を作る */
+    position: absolute;
+    left: 0; /* 左端に配置 */
+    top: 50%; /* ★縦方向の中央に配置 */
+    transform: translateY(-50%); /* ★縦方向のズレを完全に補正 */
+    width: 8px; /* ★線の太さ（画像に合わせて少し太めに） */
+    height: 1.2em; /* ★線の高さ（文字より少し高くすると画像に近づくわ） */
+    background-color: #E60012; /* ★赤い色（パキッとした赤） */
+}
+
+.header {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    background-image: url('../img/mainvisual.jpg');
+    background-size: cover;
+    background-position: center;
+    margin-bottom: 180px;
+}
+
+.header .container {
+    position: absolute;
+    top: 30%;
+    left: 0;
+    padding-left: 5%;
+    padding-right: 5%;
+    width: 100%;
+    max-width: 100%;
+}
+
+.header-content {
+    display: inline-block;
+    text-align: left;
+}
+
+.catchphrase {
+    font-size: 2.8rem;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 16px;
+    text-align: left;
+}
+
+.catchphrase-subtitle {
+    font-size: 1.4rem;
+    margin-bottom: 48px;
+    font-weight: bold;
+    text-align: left;
+}
+
+.contact-btn-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.micro-copy {
+    display: block;
+    font-size: 1rem;
+    font-weight: 700;
+    color: #e63946;
+    margin-bottom: 8px;
+    letter-spacing: 0.05em;
+    text-align: center;
+}
+
+.contact-btn {
+    display: inline-block;
+    background-color: #e63946;
+    color: #fff;
+    padding: 18px 40px;
+    border-radius: 50px;
+    font-weight: bold;
+    text-decoration: none;
+    box-shadow: 0 4px 15px rgba(230, 57, 70, 0.3);
+    transition: all 0.3s ease;
+}
+
+.contact-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(230, 57, 70, 0.5);
+}
+
+.mission,
+.about,
+.sales {
+    width: 100%;
+}
+
+.mission-grid,
+.about-grid,
+.sales-grid {
+    display: flex;
+    align-items: stretch;
+    justify-content: space-between;
+    gap: 32px;
+}
+
+.mission-text,
+.about-text,
+.sales-text {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.mission-text h3,
+.about-text h3,
+.sales-text h3 {
+    font-size: 1.5rem;
+    margin-bottom: 24px;
+}
+
+.mission-text p,
+.about-text p,
+.sales-text p {
+    text-align: justify;
+}
+
+.mission-image,
+.about-image,
+.sales-image {
+    flex: 1;
+    max-width: 450px;
+    display: flex;
+    align-items: center;
+}
+
+.mission-image img,
+.about-image img,
+.sales-image img {
+    /* ここを書き換え */
+    width: 90%;              /* 70%〜80%くらいがお上品よ */
+    margin: 0 auto;         /* これ重要！狭くした分、中央に寄せる */
+    display: block;         /* margin: 0 autoを効かせるために必要 */
+
+    /* 前回の高さを合わせるCSS（そのまま維持） */
+    aspect-ratio: 16 / 9;    /* 比率を固定して高さを合わせる */
+    object-fit: cover;
+    object-position: center;
+    
+    /* 装飾（そのまま維持） */
+    border-radius: 5px;
+    filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.15));
+}
+
+
+/* カードレイアウト */
+
+.challenges-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.challenges-card {
+    background-color: #ffffff; /* 混じりけのない純白 */
+    padding: 40px 32px;        /* 上下の余白を広げ、情報の呼吸を確保 */
+    border-radius: 12px;       /* 8pxより少しだけモダンで柔らかなR */
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.06); /* 繊細かつ広大な影 */
+    transition: transform 0.3s ease; /* 触れた時の反応。静止画で終わらせない */
+}
+
+.challenges-card:hover {
+    transform: translateY(-5px); /* ユーザーの意思に呼応する */
+}
+
+.challenges-card p {
+    text-align: left;         /* 規律あるテキスト配置 */
+    color: #444;              /* 真っ黒ではない、深いグレーで高級感を */
+    font-size: 0.9rem;        /* 情報を凝縮し、知的な印象を */
+    line-height: 1.8;         /* 行間は、読み手の心の余裕よ */
+}
+
+.challenges-card-icon img {
+    display: block;
+    margin-inline: auto;
+    width: 30%;
+    margin-bottom: 16px;
+}
+
+.challenges-card h4 {
+    text-align: center;
+}
+
+
+
+
+/* 料金表 */
+.table-wrapper { overflow-x: auto; }
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+th, td {
+    border: 1px solid #ddd;
+    padding: 15px;
+    text-align: left;
+}
+
+.pricing .note {
+    color: #E60012;
+    font-weight: bold;
+}
+
+.contact {
+    /* 💡 ポイント：画像を黒の半透明グラデーション（rgbaの0.7）で上から覆ってガチで暗くするわ！ */
+    background-image: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), url("../img/footer-img.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: scroll; /* スマホでの挙動を安定させるためにscrollが正解よ！ */
+    color: #ffffff; /* 背景が暗くなるから、文字は白（#ffffff）にリダイレクトして視認性1000%に！ */
+}
+
+.contact .wrapper {
+    padding-top: 64px; /* 背景画像が入るから、上の余白を少し広げて引き締めると超絶カッコいいわよ！ */
+    padding-bottom: 32px; /* フッターとしての落ち着きを出すために、下に少しクッション（余白）をプラス！ */
+    margin-bottom: 0px;
+}
+
+.contact .section-title {
+    text-align: center; /* タイトルも中央にバチッと揃えて大将軍の構えに！ */
+    margin-bottom: 24px;
+}
+
+.contact p {
+    text-align: center;
+    margin-bottom: 48px;
+}
+
+.contact .contact-btn-wrap {
+    text-align: center; /* ボタンの親要素を中央揃えにして、ボタンが真ん中にドカンと配置されるようにハック！ */
+    margin-bottom: 120px; /* スマホでの見やすさを考えて、下の余白を160pxから120pxに少し引き算（最適化）よ！ */
+}
+
+.contact .copyright {
+    font-size: 12px; /* コピーライトはsmallタグのニュアンスに合わせて少し控えめなサイズにデバッグ！ */
+    margin-bottom: 16px;
+    opacity: 0.7; /* 著作権表示は少しだけ薄くして、メインの文字を引き立てるのがプロの職人技よ！ */
+}
+
+@media screen and (max-width: 767px) {
+    body {
+        font-size: 0.9rem;
+        line-height: 1.8;
+        letter-spacing: 0.05em;
+    }
+
+    .wrapper {
+        margin-bottom: 90px;
+        padding-inline: 16px;
+    }
+
+    .challenges .wrapper,
+    .sales .wrapper {
+        padding-block: 50px;
+    }
+
+    .section-title {
+        font-size: 1.5rem;
+        margin-bottom: 30px;
+    }
+
+    .mission .section-title,
+    .about .section-title,
+    .sales .section-title {
+        padding-left: 16px;
+    }
+
+    .mission .section-title::before,
+    .about .section-title::before,
+    .sales .section-title::before {
+        width: 5px;
+    }
+
+    .header {
+        min-height: auto;
+        padding-block: 80px;
+        margin-bottom: 90px;
+    }
+
+    .header .container {
+        position: static;
+        top: auto;
+        left: auto;
+        padding-inline: 20px;
+    }
+
+    .catchphrase {
+        font-size: 1.6rem;
+        margin-bottom: 12px;
+    }
+
+    .catchphrase-subtitle {
+        font-size: 1.05rem;
+        margin-bottom: 32px;
+    }
+
+    .micro-copy {
+        font-size: 0.85rem;
+    }
+
+    .contact-btn {
+        width: 100%;
+        max-width: 320px;
+        padding: 16px 24px;
+        font-size: 1rem;
+        text-align: center;
+        box-sizing: border-box;
+    }
+
+    .mission-grid,
+    .about-grid,
+    .sales-grid {
+        flex-direction: column;
+        gap: 24px;
+    }
+
+    .mission-text,
+    .about-text,
+    .sales-text {
+        order: 1;
+    }
+
+    .mission-image,
+    .about-image,
+    .sales-image {
+        order: 2;
+        max-width: 100%;
+    }
+
+    .mission-text h3,
+    .about-text h3,
+    .sales-text h3 {
+        font-size: 1.25rem;
+        margin-bottom: 16px;
+    }
+
+    .mission-image img,
+    .about-image img,
+    .sales-image img {
+        width: 100%;
+    }
+
+    .challenges-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .challenges-card {
+        padding: 30px 24px;
+    }
+
+    .challenges-card p {
+        text-align: center;
+    }
+
+    .challenges-card-icon img {
+        width: 24%;
+    }
+
+
+    th, td {
+        padding: 12px 10px;
+        font-size: 0.85rem;
+    }
+
+    .contact .wrapper {
+        padding-top: 50px;
+        padding-bottom: 20px;
+    }
+
+    .contact .section-title {
+        margin-bottom: 20px;
+    }
+
+    .contact p {
+        margin-bottom: 32px;
+    }
+
+    .contact .contact-btn-wrap {
+        margin-bottom: 60px;
+    }
+}
+
+@media screen and (max-width: 430px) {
+    .mission .section-title,
+    .about .section-title,
+    .sales .section-title {
+        line-height: 1.4;
+        padding-left: 16px;
+    }
+
+    .mission .section-title::before,
+    .about .section-title::before,
+    .sales .section-title::before {
+        top: 0;
+        transform: none;
+        width: 5px;
+        height: 100%;
+    }
+}
