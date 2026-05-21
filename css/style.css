@@ -26,6 +26,12 @@ li {
     list-style: none;
 }
 
+.inner {
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+}
+
 .wrapper {
     max-width: 1024px;
     margin: 0 auto;
@@ -33,13 +39,28 @@ li {
     margin-bottom: 180px;
 }
 
-.challenges .wrapper,
-.sales .wrapper {
+.pricing .wrapper {
+    background-color: #0d1b2a;
+    padding-block: 80px;
+    box-shadow: 0 0 0 100vmax #0d1b2a;
+    clip-path: inset(0 -100vmax);
+    z-index: -10;
+}
+
+.about .wrapper {
     background-color: #FAF9F6; /* ここにお好みのコードを */
     padding-block: 80px;
     box-shadow: 0 0 0 100vmax #FAF9F6;
     clip-path: inset(0 -100vmax);
     z-index: -10;
+}
+
+.about .wrapper {
+    margin-top: 120px;
+}
+
+.challenges .wrapper {
+    margin-bottom: 0;
 }
 
 /* セクション共通 */
@@ -48,6 +69,12 @@ li {
     font-size: 2rem;
     margin-bottom: 50px;
     position: relative;
+}
+
+.pricing .section-title,
+.pricing th,
+.pricing td {
+    color: #e0e6ed;
 }
 
 .mission .section-title,
@@ -211,20 +238,36 @@ li {
     filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.15));
 }
 
+.about-image {
+    display: inline-block; /* 親要素の幅を画像サイズまで縮める */
+}
+
+.about-image img {
+    display: block;        /* 画像下の不要な隙間を排除 */
+    width: 100%;           /* 親要素の幅に追従 */
+    height: auto;
+}
+
+.about-image p {
+    margin-top: 8px;       /* 画像との間隔 */
+    font-size: 0.875rem;
+    line-height: 1.4;
+    text-align: center;    /* テキストを中央揃え */
+}
 
 /* カードレイアウト */
 
 .challenges-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
+    gap: 16px;
 }
 
 .challenges-card {
     background-color: #ffffff; /* 混じりけのない純白 */
     padding: 40px 32px;        /* 上下の余白を広げ、情報の呼吸を確保 */
     border-radius: 12px;       /* 8pxより少しだけモダンで柔らかなR */
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.06); /* 繊細かつ広大な影 */
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
     transition: transform 0.3s ease; /* 触れた時の反応。静止画で終わらせない */
 }
 
@@ -251,24 +294,48 @@ li {
 }
 
 
-
-
 /* 料金表 */
-.table-wrapper { overflow-x: auto; }
 table {
     width: 100%;
-    border-collapse: collapse;
+    border-collapse: separate;
+    border-spacing: 0;
+    
+    /* 2pxの太さの枠線を確保 */
+    border: 2px solid transparent; 
+    
+    /* ★ここが魔術：4色の金をブレンドして、光の反射（金属光沢）を作る */
+    border-image: linear-gradient(
+        135deg, 
+        #bf953f 0%, 
+        #fcf6ba 25%, 
+        #b38728 50%, 
+        #fbf5b7 75%, 
+        #aa771c 100%
+    ) 1;
+    
+    /* 角丸を強制的に効かせるための記述 */
+    border-radius: 8px;
+    background-clip: padding-box;
+    overflow: hidden; 
+    
     margin-bottom: 20px;
 }
+
 th, td {
-    border: 1px solid #ddd;
+    /* 内側の線も、外枠に合わせて上品なグラデーションにする */
+    border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+    border-right: 1px solid rgba(212, 175, 55, 0.2);
+    border-top: 1px solid rgba(212, 175, 55, 0.2);
     padding: 15px;
     text-align: left;
 }
 
+th:last-child, td:last-child { border-right: none; }
+tr:last-child th, tr:last-child td { border-bottom: none; }
 .pricing .note {
-    color: #E60012;
-    font-weight: bold;
+    /* 注意書き：金色の世界観に合わせて、ギラギラした赤ではなく少し落ち着いた上品な赤に変更 */
+    color: #cbd5e1; 
+    font-weight: normal;
 }
 
 .contact {
@@ -307,6 +374,48 @@ th, td {
     margin-bottom: 16px;
     opacity: 0.7; /* 著作権表示は少しだけ薄くして、メインの文字を引き立てるのがプロの職人技よ！ */
 }
+
+.sidebar {
+    width: 300px;
+    padding: 16px;
+}
+
+.author,
+.ranking,
+.archive {
+    text-align: center;
+    margin-bottom: 64px;
+}
+
+.author img {
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    margin-bottom: 32px;
+}
+
+.sidebar .sidebar-title {
+    font-size: 1rem;
+    font-weight: bold;
+    margin-bottom: 32px;
+}
+
+.author .profile {
+    font-size: 0.875rem;
+    text-align: justify;
+
+}
+
+.news article {
+    margin-bottom: 30px;
+}
+
+.news .sidebar-news-title {
+    font-size: 0.875rem;
+    font-weight: normal;
+    text-align: left;
+}
+
 
 @media screen and (max-width: 767px) {
     body {
@@ -467,5 +576,31 @@ th, td {
         transform: none;
         width: 5px;
         height: 100%;
+    }
+
+    .about .wrapper,
+    .sales .wrapper {
+        padding-block: 16px;
+    }
+
+    .challenges .wrapper {
+        padding-block: 90px;
+    }
+
+    .about .wrapper {
+        margin-block: 90px;
+    }
+
+    .inner {
+        flex-direction: column;
+    }
+
+    .main-content {
+        width: 100%;
+    }
+
+    .sidebar {
+        width: 100%;
+        padding-block: 16px;
     }
 }
